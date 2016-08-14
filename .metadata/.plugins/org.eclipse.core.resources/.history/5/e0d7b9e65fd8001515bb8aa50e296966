@@ -1,0 +1,32 @@
+import java.util.ArrayList;
+
+public class InsertSort {
+
+	public static String main(String arg) {
+		// TODO Auto-generated method stub
+		String result = null;
+		ArrayList<Integer> unsorted = new ArrayList<Integer>();
+		System.out.println("passed on args == " + arg);
+		
+		String[] lines = arg.split(System.lineSeparator());
+		for (String retval : lines[0].split(" ")) {
+			unsorted.add(Integer.parseInt(retval));
+		}
+		System.out.println("lines[1] == " + lines[1]);
+		//int input = Integer.parseInt(lines[1]);
+		int[] toSort = new int[unsorted.size()];
+		
+		for (int i = 0; i < unsorted.size(); i++) {
+			toSort[i] = unsorted.get(i);
+		}
+		
+		unsorted.sort(null);
+		for (int i = 0; i < unsorted.size(); i++) {
+			System.out.print(unsorted.get(i) + " ");
+		}
+		System.out.println("");
+		
+		return result;
+	}
+
+}
