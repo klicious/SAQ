@@ -1,3 +1,6 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -47,6 +50,37 @@ public class InsertSort {
 		}
 		String test = Arrays.toString(toSort);
 		System.out.println("This is the test result of Insert Sort : " + test);
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (int ret: toSort){
+			sb.append(String.valueOf(ret));
+			sb.append(" ");
+		}
+		
+		result = sb.toString().trim();
+		int index = -1;
+		for (int i = 0; i < toSort.length; i++) {
+			if(toSort[i] == Integer.parseInt(lines[1])) {
+				index = i;
+			}
+		}
+		
+		
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("output.txt", "UTF-8");
+			writer.println(result);
+			writer.println(index + 1);
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} finally {
+			writer.close();
+		}
 		
 		return result;
 	}
