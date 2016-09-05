@@ -1,0 +1,9 @@
+[submodule "MathAlgorithms"]
+	path = MathAlgorithms
+	url = https://github.com/klicious/MathAlgorithms.git
+[submodule "GreednQueueAlgorithms"]
+	path = GreednQueueAlgorithms
+	url = https://github.com/klicious/GreednQueueAlgorithms.git
+[submodule "SearchAlgorithm"]
+	path = SearchAlgorithm
+	url = https://github.com/klicious/SearchAlgorithm.git
