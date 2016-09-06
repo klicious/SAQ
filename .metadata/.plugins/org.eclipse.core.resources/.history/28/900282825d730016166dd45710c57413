@@ -1,0 +1,34 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class MatrixApplication {
+
+	public static void main(String arg) {
+		// INPUT variables e.g) Input of 3by3 Matrix, 9 numbers consecutively provided from top-left to bottom-right of the matrix
+		String[] line = arg.split(System.lineSeparator());
+		n = line[0];
+		String[] lines = line.split(" ");
+		int n = 0;
+		
+		
+
+		// OUTPUT variables e.g) inverse matrix (1 line = 1 row) / next line / solution x,y,z respectively.
+		
+		
+		// write to output file
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("output.txt", "UTF-8");
+			writer.println();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} finally {
+			writer.close();
+		}
+
+	}
+
+}

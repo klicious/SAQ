@@ -1,0 +1,182 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class NewChessGame {
+
+	public static void main(String arg) {
+		// INPUT variables e.g) Input of 3by3 Matrix, 9 numbers consecutively provided from top-left to bottom-right of the matrix
+		String[] line = arg.split(System.lineSeparator());
+		int n = Integer.parseInt(line[0].trim());
+		String[] lines = line[1].split(",");
+		String[] dataA = lines[0].split(" ");
+		String[] dataB = lines[1].split(" ");
+		String[] dataC = lines[2].split(" ");
+
+		String[][] matrix = new String[n][n];
+		
+		// init
+		for(int a = 0; a < n; a++) {
+			for(int b = 0; b < n; b++) {
+				matrix[a][b] = "-";
+			}
+		}
+		
+		for(int i = 0; i < dataA.length; i++) {
+			int a = Integer.parseInt(dataA[i++].trim());
+			int b = Integer.parseInt(dataA[i].trim());
+			putQueen(matrix, "A", a, b, n);
+		}
+		
+		for(int i = 0; i < dataB.length; i++) {
+			int a = Integer.parseInt(dataB[i++].trim());
+			int b = Integer.parseInt(dataB[i].trim());
+			putQueen(matrix, "B", a, b, n);
+		}
+		
+		for(int i = 0; i < dataC.length; i++) {
+			int a = Integer.parseInt(dataC[i++].trim());
+			int b = Integer.parseInt(dataC[i].trim());
+			putQueen(matrix, "C", a, b, n);
+		}
+		
+		// check input
+		show(matrix);
+
+		// OUTPUT variables e.g) inverse matrix (1 line = 1 row) / next line / solution x,y,z respectively.
+		int result = countSafe(matrix,n);
+		
+		// write to output file
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("output.txt", "UTF-8");
+			writer.println(result);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} finally {
+			writer.close();
+		}
+
+	}
+	
+	private static void show(String[][] m) {
+		if(m.length < 1) {
+			return;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i = 0; i < m.length; i++) {
+			sb.append("[ ");
+			for(int j = 0; j < m[0].length; j++) {
+				sb.append(m[i][j]);
+				sb.append(" ");
+			}
+			sb.append("]");
+			sb.append(System.lineSeparator());
+		}
+		
+		System.out.println("===== Printing current Matrix =====");
+		System.out.println(sb.toString());;
+		System.out.println("===== ===== =====");
+	}
+	
+	private static int countSafe(String[][] m, int table) {
+		int count = 0;
+		for(int i = 0; i < table; i++) {
+			for(int j = 0; j < table; j++) {
+				if(m[i][j].equals("-")) {
+					count++;
+				}
+			}
+		}
+		return count;
+	}
+	
+	private static void putQueen(String[][] m, String bomb, int x, int y, int table) {
+		String movable = "x";
+		int range = 0;
+		switch (bomb) {
+			case "A" :
+				range = 1;
+				for(int a = x - range; a <= x + range; a++) {
+					if(a < table && a >= 0) {
+						m[a][y] = movable;
+					}
+				}
+				for(int a = y - range; a <= y + range; a++) {
+					if(a < table && a >= 0) {
+						m[x][a] = movable;
+					}
+				}
+				for(int a = x - range, b = y - range; a <= x + range && b <= y + range; a++, b++) {
+					if(a < table && a >= 0) {
+						m[a][b] = movable;
+					}
+				}
+				for(int a = x + range, b = y - range; a >= x - range && b <= y + range; a--, b++) {
+					if(a < table && a >= 0 && b < table && b >= 0) {
+						m[a][b] = movable;
+					}
+				}
+				m[x][y] = "A";
+				break;
+			
+			case "B" :
+				range = 2;
+				for(int a = x - range; a <= x + range; a++) {
+					if(a < table && a >= 0) {
+						m[a][y] = movable;
+					}
+				}
+				for(int a = y - range; a <= y + range; a++) {
+					if(a < table && a >= 0) {
+						m[x][a] = movable;
+					}
+				}
+				for(int a = x - range, b = y - range; a <= x + range && b <= y + range; a++, b++) {
+					if(a < table && a >= 0) {
+						m[a][b] = movable;
+					}
+				}
+				for(int a = x + range, b = y - range; a >= x - range && b <= y + range; a--, b++) {
+					if(a < table && a >= 0) {
+						m[a][b] = movable;
+					}
+				}
+				m[x][y] = "B";
+				break;
+				
+			case "C" :
+				range = 3;
+				for(int a = x - range; a <= x + range; a++) {
+					if(a < table && a >= 0) {
+						m[a][y] = movable;
+					}
+				}
+				for(int a = y - range; a <= y + range; a++) {
+					if(a < table && a >= 0) {
+						m[x][a] = movable;
+					}
+				}
+				for(int a = x - range, b = y - range; a <= x + range && b <= y + range; a++, b++) {
+					if(a < table && a >= 0) {
+						m[a][b] = movable;
+					}
+				}
+				for(int a = x + range, b = y - range; a >= x - range && b <= y + range; a--, b++) {
+					if(a < table && a >= 0) {
+						m[a][b] = movable;
+					}
+				}
+				m[x][y] = "C";
+				break;
+				
+			default :
+					
+		}
+	}
+
+}

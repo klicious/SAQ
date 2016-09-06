@@ -1,0 +1,102 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class MatrixApplication {
+
+	public static void main(String arg) {
+		// INPUT variables e.g) Input of 3by3 Matrix, 9 numbers consecutively provided from top-left to bottom-right of the matrix
+		String[] line = arg.split(System.lineSeparator());
+		int n = Integer.parseInt(line[0].trim());
+		String[] lines = line[1].split(",");
+		String[] dataA = lines[0].split(" ");
+		String[] dataB = lines[1].split(" ");
+		String[] dataC = lines[2].split(" ");
+
+		String[][] matrix = new String[n][n];
+		
+		// init
+		for(int a = 0; a < n; a++) {
+			for(int b = 0; b < n; b++) {
+				matrix[a][b] = "s";
+			}
+		}
+		
+		for(int i = 0; i < dataA.length; i++) {
+			int a = Integer.parseInt(dataA[i++].trim());
+			int b = Integer.parseInt(dataA[i].trim());
+			matrix[a][b] = "A";
+		}
+		
+		for(int i = 0; i < dataB.length; i++) {
+			int a = Integer.parseInt(dataB[i++].trim());
+			int b = Integer.parseInt(dataB[i].trim());
+			matrix[a][b] = "B";
+		}
+		
+		for(int i = 0; i < dataC.length; i++) {
+			int a = Integer.parseInt(dataC[i++].trim());
+			int b = Integer.parseInt(dataC[i].trim());
+			matrix[a][b] = "C";
+		}
+		
+		// check input
+		show(matrix);
+
+		// OUTPUT variables e.g) inverse matrix (1 line = 1 row) / next line / solution x,y,z respectively.
+		
+		
+		// write to output file
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("output.txt", "UTF-8");
+			writer.println();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} finally {
+			writer.close();
+		}
+
+	}
+	
+	private static void show(String[][] m) {
+		if(m.length < 1) {
+			return;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for(int i = 0; i < m.length; i++) {
+			sb.append("[ ");
+			for(int j = 0; j < m[0].length; j++) {
+				sb.append(m[i][j]);
+				sb.append(" ");
+			}
+			sb.append("]");
+			sb.append(System.lineSeparator());
+		}
+		
+		System.out.println("===== Printing current Matrix =====");
+		System.out.println(sb.toString());;
+		System.out.println("===== ===== =====");
+	}
+	
+	private static void dropBomb(String bomb, int x, int y) {
+		
+		switch (bomb) {
+			case "A" :
+				break;
+			
+			case "B" :
+				break;
+				
+			case "C" :
+				break;
+				
+			default :
+					
+		}
+	}
+}
