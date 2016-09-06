@@ -42,6 +42,57 @@ public class EasyProblems {
 		System.out.println("============================================");
 		NewChessGame.main(changeInput);
 		System.out.println(parent + ".java :: main() :: " + Topic + " : " +  verifyResult("output.txt", topic + "_expected_output.txt"));
+		
+		/*
+		 * 3. Duplicate String
+		 */
+		topic = "duplicate_string";
+		Topic = "Duplicate String";
+		changeInput = getInputFromFile(topic + "_input.txt");
+		
+		if (changeInput == null) {
+			System.out.println(parent + ".java :: main() :: No strings read from " + topic + "_input.txt thus HALTing....");
+			return;
+		}	
+		System.out.println("============================================");
+		System.out.println(Topic + " Called");
+		System.out.println("============================================");
+		DuplicateString.main(changeInput);
+		System.out.println(parent + ".java :: main() :: " + Topic + " : " +  verifyResult("output.txt", topic + "_expected_output.txt"));
+		
+		/*
+		 * 4. Palindrome
+		 */
+		topic = "palindrome";
+		Topic = "Palindrome";
+		changeInput = getInputFromFile(topic + "_input.txt");
+		
+		if (changeInput == null) {
+			System.out.println(parent + ".java :: main() :: No strings read from " + topic + "_input.txt thus HALTing....");
+			return;
+		}	
+		System.out.println("============================================");
+		System.out.println(Topic + " Called");
+		System.out.println("============================================");
+		Palindrome.main(changeInput);
+		System.out.println(parent + ".java :: main() :: " + Topic + " : " +  verifyResult("output.txt", topic + "_expected_output.txt"));
+		
+		/*
+		 * 5. Radar Detection
+		 */
+		topic = "radar_detection";
+		Topic = "Radar Detection";
+		changeInput = getInputFromFile(topic + "_input.txt");
+		
+		if (changeInput == null) {
+			System.out.println(parent + ".java :: main() :: No strings read from " + topic + "_input.txt thus HALTing....");
+			return;
+		}	
+		System.out.println("============================================");
+		System.out.println(Topic + " Called");
+		System.out.println("============================================");
+		RadarDetection.main(changeInput);
+		System.out.println(parent + ".java :: main() :: " + Topic + " : " +  verifyResult("output.txt", topic + "_expected_output.txt"));
 
 	}
 

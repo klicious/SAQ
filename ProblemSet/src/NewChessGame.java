@@ -5,7 +5,9 @@ import java.io.UnsupportedEncodingException;
 public class NewChessGame {
 
 	public static void main(String arg) {
-		// INPUT variables e.g) Input of 3by3 Matrix, 9 numbers consecutively provided from top-left to bottom-right of the matrix
+		/*
+		 * INPUT variables e.g) Input of 3by3 Matrix, 9 numbers consecutively provided from top-left to bottom-right of the matrix
+		 */
 		String[] line = arg.split(System.lineSeparator());
 		int n = Integer.parseInt(line[0].trim());
 		String[] lines = line[1].split(",");
