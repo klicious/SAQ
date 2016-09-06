@@ -1,0 +1,45 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class Palindrome {
+
+	/*
+	 * 문제
+	 * 	문제 제시
+	 * 		단어나 구, 문장 등을 뒤에서부터 읽어도 앞에서 읽어도 같은 것을 팰린드롬(Palindrome)이라 한다. 
+	 * 		이탈리어로 뒤로 돌아가기란 말에서 유래된 말이다. 이 경우 낱말 사이의 띄어쓰기나 문장부호는 무시한다. 
+	 * 		예를 들면, "구로구", "스위스, "김밥김"이 있고, 문장으로는 "다들잠들다", "다시합창합시다" 등이 있다.
+	 * 	제약사항
+	 * 		중복되는 문자열도 허용한다. (예를 들어 SDS, ASDSA인 경우 둘 다 출력)
+	 */
+	public static void main(String[] args) {
+		/*
+		 * INPUT variables e.g) SAQLANGUAGEOFCOMPUTER / SOFTWAREPROGRAMMING
+		 */
+		String[] line = arg.split(System.lineSeparator());
+		String a = line[0].trim();
+		String b = line[0].trim();
+
+		// check input
+		System.out.println("INPUT a :: " + a);
+		System.out.println("INPUT b :: " + b);
+
+		// OUTPUT variables e.g) OF NG / 2
+		
+		// write to output file
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("output.txt", "UTF-8");
+			writer.println();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} finally {
+			writer.close();
+		}
+
+	}
+
+}

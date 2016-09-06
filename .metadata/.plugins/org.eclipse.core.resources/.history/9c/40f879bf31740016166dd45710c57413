@@ -1,0 +1,63 @@
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+
+public class DuplicateString {
+
+	public static void main(String arg) {
+		/*
+		 * INPUT variables e.g) SAQLANGUAGEOFCOMPUTER / SOFTWAREPROGRAMMING
+		 */
+		String[] line = arg.split(System.lineSeparator());
+		String a = line[0].trim();
+		String b = line[0].trim();
+
+		String[][] matrix = new String[n][n];
+		
+		// init
+		for(int a = 0; a < n; a++) {
+			for(int b = 0; b < n; b++) {
+				matrix[a][b] = "-";
+			}
+		}
+		
+		for(int i = 0; i < dataA.length; i++) {
+			int a = Integer.parseInt(dataA[i++].trim());
+			int b = Integer.parseInt(dataA[i].trim());
+			putQueen(matrix, "A", a, b, n);
+		}
+		
+		for(int i = 0; i < dataB.length; i++) {
+			int a = Integer.parseInt(dataB[i++].trim());
+			int b = Integer.parseInt(dataB[i].trim());
+			putQueen(matrix, "B", a, b, n);
+		}
+		
+		for(int i = 0; i < dataC.length; i++) {
+			int a = Integer.parseInt(dataC[i++].trim());
+			int b = Integer.parseInt(dataC[i].trim());
+			putQueen(matrix, "C", a, b, n);
+		}
+		
+		// check input
+		show(matrix);
+
+		// OUTPUT variables e.g) inverse matrix (1 line = 1 row) / next line / solution x,y,z respectively.
+		int result = countSafe(matrix,n);
+		
+		// write to output file
+		PrintWriter writer = null;
+		try {
+			writer = new PrintWriter("output.txt", "UTF-8");
+			writer.println(result);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (UnsupportedEncodingException e1) {
+			e1.printStackTrace();
+		} finally {
+			writer.close();
+		}
+
+	}
+
+}
